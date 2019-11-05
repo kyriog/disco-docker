@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+DISCO_COMMIT=$(git ls-remote https://github.com/b1naryth1ef/disco.git master | cut -f1)
+
+docker build \
+  --build-arg BUILD_DISCO_COMMIT="$DISCO_COMMIT" \
+  --build-arg PYTHON_VERSION="3.7" \
+  -t "$IMAGE_NAME" \
+  -t "$DOCKER_REPO:nightly-python3.7" \
+  .
+
+docker build \
+  --build-arg BUILD_DISCO_COMMIT="$DISCO_COMMIT" \
+  --build-arg PYTHON_VERSION="3.6" \
+  -t "$DOCKER_REPO:nightly-python3.6" \
+  .
+
+docker build \
+  --build-arg BUILD_DISCO_COMMIT="$DISCO_COMMIT" \
+  --build-arg PYTHON_VERSION="3.5" \
+  -t "$DOCKER_REPO:nightly-python3.5" \
+  .

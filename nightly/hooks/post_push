@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+docker push $DOCKER_REPO:nightly-python3.7
+docker push $DOCKER_REPO:nightly-python3.6
+docker push $DOCKER_REPO:nightly-python3.5
